@@ -2218,6 +2218,15 @@ void idFileSystemLocal::SetupGameDirectories( const char *gameName ) {
 	if ( fs_configpath.GetString()[0] ) {
 		AddGameDirectory( fs_configpath.GetString(), gameName );
 	}
+
+#if defined(__APPLE__)
+	// Add the current executable's path to search list
+	// to find files in the App Bundle
+	idStr			exeDir;
+	Sys_GetPath(PATH_EXE, exeDir);
+	exeDir.StripFilename( );
+	AddGameDirectory( exeDir, gameName );
+#endif
 }
 
 /*
