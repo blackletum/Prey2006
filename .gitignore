@@ -23,3 +23,4 @@ prey06
 prey06ded
 *.exe
 *.so
+.DS_Store
